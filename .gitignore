@@ -1,2 +1,4 @@
 ml_data/
 .ipynb_checkpoints/
+*.csv
+data/
