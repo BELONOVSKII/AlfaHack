@@ -1,0 +1,41 @@
+'nlp' extra dependecy package 'gensim' isn't installed. Look at README.md in repo 'LightAutoML' for installation instructions.
+'nlp' extra dependecy package 'nltk' isn't installed. Look at README.md in repo 'LightAutoML' for installation instructions.
+'nlp' extra dependecy package 'transformers' isn't installed. Look at README.md in repo 'LightAutoML' for installation instructions.
+'nlp' extra dependecy package 'gensim' isn't installed. Look at README.md in repo 'LightAutoML' for installation instructions.
+'nlp' extra dependecy package 'nltk' isn't installed. Look at README.md in repo 'LightAutoML' for installation instructions.
+'nlp' extra dependecy package 'transformers' isn't installed. Look at README.md in repo 'LightAutoML' for installation instructions.
+[2024-11-07 14:17:29]
+/home/peter/venvs/base_venv/lib/python3.10/site-packages/lightautoml/ml_algo/dl_model.py:42: UserWarning: 'transformers' - package isn't installed
+  warnings.warn("'transformers' - package isn't installed")
+/home/peter/venvs/base_venv/lib/python3.10/site-packages/lightautoml/text/embed.py:22: UserWarning: 'transformers' - package isn't installed
+  warnings.warn("'transformers' - package isn't installed")
+/home/peter/venvs/base_venv/lib/python3.10/site-packages/lightautoml/text/dl_transformers.py:25: UserWarning: 'transformers' - package isn't installed
+  warnings.warn("'transformers' - package isn't installed")
+[2024-11-07 14:17:30,519] - [   START    ] - Fitting TabularLamaUtilized
+[14:17:30] Start automl [1mutilizator[0m with listed constraints:
+[14:17:30] - time: 7200.00 seconds
+[14:17:30] - CPU: 16 cores
+[14:17:30] - memory: 16 GB
+
+[14:17:30] [1mIf one preset completes earlier, next preset configuration will be started[0m
+
+[14:17:30] ==================================================
+[14:17:30] Start 0 automl preset configuration:
+[14:17:30] [1mconf_0_sel_type_0.yml[0m, random state: {'reader_params': {'random_state': 42}, 'nn_params': {'random_state': 42}, 'general_params': {'return_all_predictions': False}}
+[14:17:30] Stdout logging level is INFO.
+[14:17:30] Task: binary
+
+[14:17:30] Start automl preset with listed constraints:
+[14:17:30] - time: 7200.00 seconds
+[14:17:30] - CPU: 16 cores
+[14:17:30] - memory: 16 GB
+
+[14:17:30] [1mTrain data shape: (413194, 68)[0m
+
+[14:17:44] Layer [1m1[0m train process start. Time left 7186.49 secs
+[14:17:58] Start fitting [1mLvl_0_Pipe_0_Mod_0_LinearL2[0m ...
+[14:18:55] Fitting [1mLvl_0_Pipe_0_Mod_0_LinearL2[0m finished. score = [1m0.8080316199319622[0m
+[14:18:55] [1mLvl_0_Pipe_0_Mod_0_LinearL2[0m fitting and predicting completed
+[14:18:55] Time left 7115.55 secs
+
+[14:19:07] Start fitting [1mLvl_0_Pipe_1_Mod_0_LightGBM[0m ...
