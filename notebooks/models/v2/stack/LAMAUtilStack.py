@@ -25,6 +25,8 @@ N_JOBS = 16
 with CONFIG_PATH.open() as f:
     cfg = yaml.load(f, Loader=yaml.SafeLoader)
     
+cfg["stack_features"] = ["lamau_814_full_dataset", "lamann_autoint_8053_full_dataset"]
+    
 df_train = pd.read_parquet(DATA_PATH / "train_preproc_oof.parquet")
 
 df_train["target"].value_counts(normalize=True)

@@ -1,0 +1,52 @@
+[09:30:47] Stdout logging level is INFO.
+[09:30:47] Copying TaskTimer may affect the parent PipelineTimer, so copy will create new unlimited TaskTimer
+[09:30:47] Task: binary
+
+[09:30:47] Start automl preset with listed constraints:
+[09:30:47] - time: 7200.00 seconds
+[09:30:47] - CPU: 16 cores
+[09:30:47] - memory: 16 GB
+
+[09:30:47] [1mTrain data shape: (413194, 65)[0m
+
+[09:30:58] Layer [1m1[0m train process start. Time left 7188.50 secs
+[09:31:11] Start fitting [1mLvl_0_Pipe_0_Mod_0_LinearL2[0m ...
+[09:31:55] Fitting [1mLvl_0_Pipe_0_Mod_0_LinearL2[0m finished. score = [1m0.8067631100273743[0m
+[09:31:55] [1mLvl_0_Pipe_0_Mod_0_LinearL2[0m fitting and predicting completed
+[09:31:55] Time left 7131.90 secs
+
+[09:32:01] [1mSelector_LightGBM[0m fitting and predicting completed
+[09:32:13] Start fitting [1mLvl_0_Pipe_1_Mod_0_LightGBM[0m ...
+[09:32:43] Fitting [1mLvl_0_Pipe_1_Mod_0_LightGBM[0m finished. score = [1m0.8077588472516705[0m
+[09:32:43] [1mLvl_0_Pipe_1_Mod_0_LightGBM[0m fitting and predicting completed
+[09:32:43] Start hyperparameters optimization for [1mLvl_0_Pipe_1_Mod_1_Tuned_LightGBM[0m ... Time budget is 300.00 secs
+[09:37:45] Hyperparameters optimization for [1mLvl_0_Pipe_1_Mod_1_Tuned_LightGBM[0m completed
+[09:37:45] Start fitting [1mLvl_0_Pipe_1_Mod_1_Tuned_LightGBM[0m ...
+[09:38:19] Fitting [1mLvl_0_Pipe_1_Mod_1_Tuned_LightGBM[0m finished. score = [1m0.8136841966767007[0m
+[09:38:19] [1mLvl_0_Pipe_1_Mod_1_Tuned_LightGBM[0m fitting and predicting completed
+[09:38:19] Start fitting [1mLvl_0_Pipe_1_Mod_2_CatBoost[0m ...
+[09:38:42] Fitting [1mLvl_0_Pipe_1_Mod_2_CatBoost[0m finished. score = [1m0.811945999095705[0m
+[09:38:42] [1mLvl_0_Pipe_1_Mod_2_CatBoost[0m fitting and predicting completed
+[09:38:42] Start hyperparameters optimization for [1mLvl_0_Pipe_1_Mod_3_Tuned_CatBoost[0m ... Time budget is 300.00 secs
+[09:43:44] Hyperparameters optimization for [1mLvl_0_Pipe_1_Mod_3_Tuned_CatBoost[0m completed
+[09:43:44] Start fitting [1mLvl_0_Pipe_1_Mod_3_Tuned_CatBoost[0m ...
+[09:44:19] Fitting [1mLvl_0_Pipe_1_Mod_3_Tuned_CatBoost[0m finished. score = [1m0.8125790209061262[0m
+[09:44:19] [1mLvl_0_Pipe_1_Mod_3_Tuned_CatBoost[0m fitting and predicting completed
+[09:44:19] Time left 6387.71 secs
+
+[09:44:19] [1mLayer 1 training completed.[0m
+
+[09:44:19] Blending: optimization starts with equal weights and score [1m0.8127950027730968[0m
+[09:44:25] Blending: iteration [1m0[0m: score = [1m0.8137227905262973[0m, weights = [1m[0.         0.         0.7971254  0.06165828 0.14121631][0m
+[09:44:31] Blending: iteration [1m1[0m: score = [1m0.8137305900009857[0m, weights = [1m[0.         0.         0.8152462  0.         0.18475378][0m
+[09:44:36] Blending: iteration [1m2[0m: score = [1m0.8137305900009857[0m, weights = [1m[0.         0.         0.8152462  0.         0.18475378][0m
+[09:44:36] Blending: no score update. Terminated
+
+[09:44:36] [1mAutoml preset training completed in 829.35 seconds[0m
+
+[09:44:36] Model description:
+Final prediction for new objects (level 0) = 
+	 0.81525 * (5 averaged models Lvl_0_Pipe_1_Mod_1_Tuned_LightGBM) +
+	 0.18475 * (5 averaged models Lvl_0_Pipe_1_Mod_3_Tuned_CatBoost) 
+
+0.8137305900009857
