@@ -50,7 +50,7 @@ selected_features:
 - feature_168
 - feature_183
 stack_features:
-- lamau_814_full_dataset
+- lamau_81425_full_dataset
 - lgb_8122_full_dataset
 - cb_8114_full_dataset
 - xgb_81325_full_dataset
