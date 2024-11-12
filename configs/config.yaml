@@ -49,6 +49,7 @@ selected_features:
 - feature_162
 - feature_168
 - feature_183
+
 stack_features:
 - lamau_81425_full_dataset
 - lgb_8122_full_dataset
@@ -57,24 +58,64 @@ stack_features:
 - lama_81298_full_dataset
 - lamann_autoint_8053_full_dataset
 - lamann_fttransformer_8050_full_dataset
-stack_selected_features:
-- feature_71
-- feature_12
-- feature_16
-- feature_20
-- feature_27
-- feature_53
-- feature_72
-- feature_124
-- feature_127
-- feature_157
-- feature_158
-- feature_171
-- feature_186
-- lamau_814_full_dataset
-- lgb_8122_full_dataset
-- cb_8114_full_dataset
-- xgb_81325_full_dataset
-- lama_81298_full_dataset
-- lamann_autoint_8053_full_dataset
-- lamann_fttransformer_8050_full_dataset
+
+lightgbm:
+  bagging_fraction: 0.8714403491005949
+  bagging_freq: 10
+  boosting: gbdt
+  early_stopping_round: 100
+  feature_fraction: 0.408622791755182
+  is_unbalance: false
+  lambda_l1: 2.4525578099121934
+  lambda_l2: 8.18685006212635
+  learning_rate: 0.03
+  max_depth: 11
+  min_data_in_leaf: 221
+  min_gain_to_split: 1.3068024971309598
+  num_iterations: 310
+  num_leaves: 199
+  n_jobs: 16
+  objective_type: binary
+  random_state: 42
+  time_series: false
+
+catboost:
+  auto_class_weights: SqrtBalanced
+  boosting_type: Plain
+  bootstrap_type: MVS
+  depth: 9
+  grow_policy: Lossguide
+  iterations: 955
+  l2_leaf_reg: 152.6786099554532
+  learning_rate: 0.03
+  max_leaves: 16
+  min_data_in_leaf: 164
+  model_size_reg: 135.31447594855592
+  od_wait: 100
+  one_hot_max_size: 10
+  random_state: 42
+  rsm: 0.9445988771695106
+  subsample: 0.6536507950116847
+  n_jobs: 16
+  time_series: False
+
+xgboost:
+  class_weight: null
+  colsample_bylevel: 0.6729326670511411
+  colsample_bytree: 0.5094082714701726
+  early_stopping_rounds: 100
+  enable_categorical: true
+  gamma: 2.3586252582185674
+  grow_policy: depthwise
+  learning_rate: 0.03
+  max_cat_to_onehot: 5
+  max_depth: 11
+  max_leaves: 68
+  min_child_weight: 16
+  n_estimators: 500
+  n_jobs: 16
+  objective: binary:logistic
+  random_state: 42
+  reg_alpha: 7.174195620622537
+  reg_lambda: 5.8579266748776115
+  subsample: 0.8431001018770198
