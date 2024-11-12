@@ -1,0 +1,4 @@
+[submodule "automl"]
+	path = automl
+	url = https://github.com/dertty/automl.git
+	branch = hack
