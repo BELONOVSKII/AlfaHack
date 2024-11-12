@@ -1,20 +1,18 @@
 This repository contains the code for the first stage of the **AlfaHack AutoML hackaton**.
 
 Team: ***DDDrkBBB***.
-
 Members: [Peter Belonovskiy](https://github.com/BELONOVSKII), [Kristina Galuzina](https://github.com/galuzina-k), [Timofey Lashukov](https://github.com/M1croZavr)
-
-Track: *Отток юридических лиц из расчетно-кассового обслуживания.*
-
-Leader board score: $81.7015322279558$
-
-Leader board position: **3**.
 
 <center><img src="assets/sber_kot.gif" width="200" height="200" /></center>
 
+## General info
+* Track: *Отток юридических лиц из расчетно-кассового обслуживания.*
+* Leader board score: $81.7015322279558$
+* Leader board position: **3**.
+
 
 ## TL;DR 
-Tune + fit 7 models on selected features. Blend the best model with the model staked on the oof predictions.
+Tune + fit 7 models on selected features. Each model is a mean blend on 5 stratified folds. Blend the best model with the model staked on the oof predictions.
 
 ## Repository structure
 ```
@@ -38,10 +36,10 @@ Tune + fit 7 models on selected features. Blend the best model with the model st
 ├── configs
 │   └── config.yaml   <-- config file.
 ├── data
-│   ├── models        <-- folder with model artifacts
-    ├── train         <-- raw train data
-    ├── test          <-- raw test data
-│   └── .
+│   ├── models        <-- folder with model artifacts.
+    ├── train         <-- raw train data.
+    ├── test          <-- raw test data.
+│   └── .             <-- processed data files.
 └── notebooks   <-- many-many-many-many various experiments.
 ```
 
