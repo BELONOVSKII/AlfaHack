@@ -41,6 +41,7 @@ Tune + fit 7 models on selected features. Each model is a mean blend on 5 strati
 │   ├── test          <-- raw test data.
 │   └── .             <-- processed data files.
 ├── notebooks   <-- many-many-many-many various experiments.
+├── requirements_gpu.txt  <-- python requirements on a gpu server.
 └── requirements.txt  <-- python requirements on a cpu server.
 ```
 
@@ -64,3 +65,8 @@ To reproduce the results run the notebooks in `best_res` in the following order:
     * CPU: *Intel Xeon (Cascadelake) (16) @ 2.992GHz*
     * Memory: *16 GB*
     * Python: *Python 3.10.12*
+* GPU server:
+    * CPU: *Intel Xeon Gold 6240R (6) @ 2.400GHz*
+    * GPU: *NVIDIA GeForce RTX 2080 Ti Rev. A*
+    * Memory: *16 GB*
+    * Python: *Python 3.10.0*
