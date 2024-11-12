@@ -37,10 +37,11 @@ Tune + fit 7 models on selected features. Each model is a mean blend on 5 strati
 │   └── config.yaml   <-- config file.
 ├── data
 │   ├── models        <-- folder with model artifacts.
-    ├── train         <-- raw train data.
-    ├── test          <-- raw test data.
+│   ├── train         <-- raw train data.
+│   ├── test          <-- raw test data.
 │   └── .             <-- processed data files.
-└── notebooks   <-- many-many-many-many various experiments.
+├── notebooks   <-- many-many-many-many various experiments.
+└── requirements.txt  <-- python requirements on a cpu server.
 ```
 
 ## Reproduce results
@@ -57,3 +58,9 @@ To reproduce the results run the notebooks in `best_res` in the following order:
 10. `best_res/create_stack_df.ipynb` - Adds out of fold predictions as features to the dataset. Saves stacked datasets in `data/` folder.
 11. `best_res/fit_lama_stack.ipynb` - fits + tunes stack LightAutoML on a time series cross-validation. Saves model file, model params and test predictions in `data/model/lama_stack_time_series/`.
 12. `blend.ipynb` - blends the predictions of `lamau_81425_full_dataset` and `lama_stack_time_series` models and produces the final submission.
+
+## Hardware
+* CPU server:
+    * CPU: *Intel Xeon (Cascadelake) (16) @ 2.992GHz*
+    * Memory: *16 GB*
+    * Python: *Python 3.10.12*
