@@ -57,7 +57,7 @@ To reproduce the results run the notebooks in `best_res` in the following order:
 7. `best_res/fit_lama_utilized.ipynb` - fits + tunes LightAutoMLUtilized. Saves model file, oof predictions, model params and test predictions in `data/model/lamau_81425_full_dataset/`.
 8. `best_res/fit_lama_autoint.ipynb` - fits LightAutoML AutoInt. Saves model file, oof predictions, model params and test predictions in `data/model/lamann_autoint_8053_full_dataset/`. **IMPORTANT: GPU is required**.
 9. `best_res/fit_lama_fttransformer.ipynb` - fits LightAutoML AutoInt. Saves model file, oof predictions, model params and test predictions in `data/model/lamann_fttransformer_8050_full_dataset/`. **IMPORTANT: GPU is required**.
-10. `best_res/create_stack_df.ipynb` - Adds out of fold predictions as features to the dataset. Saves stacked datasets in `data/` folder.
+10. `best_res/create_stack_df.ipynb` - Adds out-of-fold predictions as features to the dataset. Saves stacked datasets in `data/` folder.
 11. `best_res/fit_lama_stack.ipynb` - fits + tunes stack LightAutoML on a time series cross-validation. Saves model file, model params and test predictions in `data/model/lama_stack_time_series/`.
 12. `blend.ipynb` - blends the predictions of `lamau_81425_full_dataset` and `lama_stack_time_series` models and produces the final submission.
 
