@@ -89,7 +89,7 @@ Wrapped implementation of all these models, that significantly eases the workflo
 We have tried two cross-validation strategies: stratified and time-series. For the base models, stratified cross-validation has shown much better results, while for the stacking model, time-series cross-validation has made the deal.
 
 Each model has been tuned with the timeout of 1 hour (2 hours for LightAutoMLUtilized). The full train dataset has been used because we have observed that decreasing the train size significantly worsens the results.
-The best model by out-of-fold (*LightAutoMLUtilized*), was also the best on the leaderboard (approx. $\approx 0.8164$.
+The best model by out-of-fold (*LightAutoMLUtilized*), was also the best on the leaderboard $\approx 0.8164$.
 Obtained out-of-fold predictions of all models have been concatenated to the train/test datasets.
 
 Then, stacking has been performed by fitting LightAutoML on the enriched training dataset. As mentioned earlier, time-series cross validation has shown better results. The score $\approx 0.8168$ on the leaderboard has been achieved.
