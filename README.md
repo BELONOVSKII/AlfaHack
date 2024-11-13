@@ -1,18 +1,19 @@
 This repository contains the code for the first stage of the **AlfaHack AutoML hackaton**.
 
 Team: ***DDDrkBBB***.
+
 Members: [Peter Belonovskiy](https://github.com/BELONOVSKII), [Kristina Galuzina](https://github.com/galuzina-k), [Timofey Lashukov](https://github.com/M1croZavr)
 
-<center><img src="assets/sber_kot.gif" width="200" height="200" /></center>
+<p align="center"><img src="assets/sber_kot.gif" width="200" height="200" /></p>
 
 ## General info
 * Track: *Отток юридических лиц из расчетно-кассового обслуживания.*
-* Leader board score: $81.7015322279558$
-* Leader board position: **3**.
+* Leaderboard score: $81.7015322279558$
+* Leaderboard position: **3**.
 
 
 ## TL;DR 
-Tune + fit 7 models on selected features. Each model is a mean blend on 5 stratified folds. Blend the best model with the model staked on the selected features + oof predictions.
+Tune + fit 7 models on selected features. Each model is a mean blend on 5 stratified folds. Blend the best model with the model staked on the selected features and oof predictions.
 
 ## Repository structure
 ```
@@ -61,7 +62,43 @@ To reproduce the results run the notebooks in `best_res` in the following order:
 12. `blend.ipynb` - blends the predictions of `lamau_81425_full_dataset` and `lama_stack_time_series` models and produces the final submission.
 
 ## Solution explanation
-Firstly, we explored the dataset. Data has appeared to be pretty clean and well-prepared for modelling even in a raw format. Due to the lack of the information about features (they are depersonalized), feature engineering was impossible. The only thing we have done - found categorical columns in the data (the ones that contain less than *150* unique values). Finally, basic features processing (standard scaling + ordinal encoding) was applied.
+Firstly, we have explored the dataset. Data has appeared to be pretty clean and well-prepared for modeling, even in a raw format.
+Due to the lack of information about features (they are depersonalized), feature engineering is impossible. The only thing we have done is found categorical columns in the data (the ones that contain less than *150* unique values).
+Finally, basic feature processing (standard scaling + ordinal encoding) was applied.
+
+Next, we have understood that data contains too many features, and some of them are useless.
+Thus, we have decided to perform feature selection. This evidently speeds up training and results in high scores. As for the feature selection algorithm, we have chosen [Catboost Shapley values](https://catboost.ai/en/docs/concepts/shap-values?ysclid=m3fn2ebwpf967485278) feature selection.
+From our point of view, this is the most unbiased way to find really important features.
+
+Then we have proceeded to the model training. From the very beginning, we have decided that we will apply stacking due to its dominance in tabular tasks.
+For stacking, we need to train several base models with different structures, save their out-of-fold predictions, and then train the final model on the default features + out-of-fold predictions.
+
+For base models we have chosen: (out-of-fold scores are shown in bold)
+* CatBoost **0.8114**
+* LightGBM **0.8122**
+* XGBoost **0.8132**
+* LightAutoML **0.81298**
+* LightAutoMLUtilized **0.81425**
+* LightAutoML AutoInt (*Tabular neural network*) **0.8053**
+* LightAutoML FtTransformer (*Tabular neural network*) **0.805**
+
+For the stacking model:
+* LightAutoML
+
+Wrapped implementation of all these models, that significantly eases the workflow, has been taken from the open-source [automl](https://github.com/dertty/automl) package. This package allows to automatically tune parameters for each model and then fit the model with the best parameters on the cross-validated folds. Such fitting strategy reduces the variance of predictions and allows for out-of-fold predictions. Training of all the models except for the *LightAutoML AutoInt* and *LightAutoML FtTransformer* has been performed on the <ins>CPU server</ins>. Tabular neural networks have been trained on the <ins>GPU server</ins>
+We have tried two cross-validation strategies: stratified and time-series. For the base models, stratified cross-validation has shown much better results, while for the stacking model, time-series cross-validation has made the deal.
+
+Each model has been tuned with the timeout of 1 hour (2 hours for LightAutoMLUtilized). The full train dataset has been used because we have observed that decreasing the train size significantly worsens the results.
+The best model by out-of-fold (*LightAutoMLUtilized*), was also the best on the leaderboard (approx. $\approx 0.8164$.
+Obtained out-of-fold predictions of all models have been concatenated to the train/test datasets.
+
+Then, stacking has been performed by fitting LightAutoML on the enriched training dataset. As mentioned earlier, time-series cross validation has shown better results. The score $\approx 0.8168$ on the leaderboard has been achieved.
+
+
+Finally, we have decided to blend the predictions of the best base model (*LightAutoMLUtilized*) and the stacking model with weights $[0.15, 0.85]$ respectively. The weights were chosen via the leaderboard.
+
+Final leaderboard score: $\mathbf{81.7015322279558}$
+
 
 ## Hardware
 * CPU server:
