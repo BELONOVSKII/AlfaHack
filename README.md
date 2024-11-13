@@ -12,7 +12,7 @@ Members: [Peter Belonovskiy](https://github.com/BELONOVSKII), [Kristina Galuzina
 
 
 ## TL;DR 
-Tune + fit 7 models on selected features. Each model is a mean blend on 5 stratified folds. Blend the best model with the model staked on the oof predictions.
+Tune + fit 7 models on selected features. Each model is a mean blend on 5 stratified folds. Blend the best model with the model staked on the selected features + oof predictions.
 
 ## Repository structure
 ```
@@ -59,6 +59,9 @@ To reproduce the results run the notebooks in `best_res` in the following order:
 10. `best_res/create_stack_df.ipynb` - Adds out of fold predictions as features to the dataset. Saves stacked datasets in `data/` folder.
 11. `best_res/fit_lama_stack.ipynb` - fits + tunes stack LightAutoML on a time series cross-validation. Saves model file, model params and test predictions in `data/model/lama_stack_time_series/`.
 12. `blend.ipynb` - blends the predictions of `lamau_81425_full_dataset` and `lama_stack_time_series` models and produces the final submission.
+
+## Solution explanation
+Firstly, we explored the dataset. Data has appeared to be pretty clean and well-prepared for modelling even in a raw format. Due to the lack of the information about features (they are depersonalized), feature engineering was impossible. The only thing we have done - found categorical columns in the data (the ones that contain less than *150* unique values). Finally, basic features processing (standard scaling + ordinal encoding) was applied.
 
 ## Hardware
 * CPU server:
